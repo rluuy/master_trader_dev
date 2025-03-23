@@ -9,18 +9,30 @@ import time
 
 DATE_CONVERT = {"Jan":1, "Feb":2, "Mar":3, "Apr":4, "May":5, "Jun":6, "Jul":7, "Aug":8, "Sep":9, "Sept":9, "Oct":10, "Nov":11, "Dec":12}
 
-def scrape_site(politician_id):
-    # Setup Chrome options
+def scrape_politician(politician_id):
+    '''
+    Scrapes capitoltrades.com for a politician's stock history.
+
+    Pre: politician_id must be valid
+
+    Post: shit fucking works brother
+
+    Parameters:
+        - (String) politician_id: ID of the polician in the capitoltrades site
+    
+    Return: pd.dataframe with schema 
+    [ticker, mm/dd/yyyy published, mm/dd/yyyy traded, days filed after trade, action, dollar amount (range lo-hi)]
+    '''
+
     options = Options()
     options.add_argument("--headless")  # Run in headless mode
     options.add_argument("--window-size=1920,1080")
 
-    # Setup the Service with correct path
     service = Service()  # <-- Adjust path if needed
     driver = webdriver.Chrome(service=service, options=options)
 
     # Navigate to the page
-    url = 'https://www.capitoltrades.com/politicians/P000197?page='
+    url = "https://www.capitoltrades.com/politicians/" + politician_id + "?page="
 
     # Scrape trade transactions
     trades = []
@@ -73,3 +85,75 @@ def scrape_site(politician_id):
 
     # Output results
     return pd.DataFrame(trades)
+
+def scrape_stock_data(ticker):
+    '''
+    Scrapes yahoo finance for a ticker's summary data.
+
+    Pre: ticker must be a valid ticker
+
+    Post: shit fucking works dude
+
+    Parameters:
+     - (String) ticker: ticker of the stock to scrape 
+
+    Return: dict containing relevant statistics
+    '''
+    
+    options = Options()
+    options.add_argument("--headless")  # Run in headless mode
+    options.add_argument("--window-size=1920,1080")
+
+    service = Service()  # <-- Adjust path if needed
+    driver = webdriver.Chrome(service=service, options=options)
+
+    try:
+        url = "https://finance.yahoo.com/quote/" + ticker + "/s"
+        driver.get(url)
+
+        out = {}
+
+        summary = driver.find_element(By.CSS_SELECTOR, "[data-testid=\"quote-statistics\"").find_element(By.TAG_NAME, "ul")
+        fields = ["PE Ratio (TTM)", "EPS (TTM)", "Previous Close", "Open", "Ask", "Day's Range", "Week Range"]
+        for item, title in zip(summary.find_elements(By.CLASS_NAME, "value"), summary.find_elements(By.CLASS_NAME, "label")):
+            if title in fields:
+                out[title.text.strip()] = item.text.strip()
+    except Exception as e:
+        print("Something went wrong!")
+
+    driver.close()
+
+    return out
+
+def scrape_stock_news(ticker):
+    '''
+    Scrapes most recent news headlines for a stock ticker
+    
+    Pre: ticker must be a valid ticker
+
+    Post: shit fucking works dude
+
+    Parameters:
+     - (String) ticker: ticker of the stock to scrape 
+    '''
+    options = Options()
+    options.add_argument("--headless")  # Run in headless mode
+    options.add_argument("--window-size=1920,1080")
+
+    service = Service()  # <-- Adjust path if needed
+    driver = webdriver.Chrome(service=service, options=options)
+
+
+    url = "https://finance.yahoo.com/quote/" + ticker + "/"
+    driver.get(url)
+
+    out = []
+
+    headlines = driver.find_element(By.CSS_SELECTOR, "[data-testid=\"recent-news\"]").find_elements(By.TAG_NAME, "a")
+    for headline in headlines:
+        if "Ad" not in headline.text and headline.text != "":
+            out.append((headline.text, headline.get_attribute("href")))
+
+    driver.close()
+
+    return out
