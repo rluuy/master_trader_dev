@@ -47,9 +47,9 @@ const LandingPage = () => {
               <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${companion.color} blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
               
               {/* Inner content */}
-              <button onClick={buttonHandler} className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center bg-clip-content">
+              <Link to="/stock" onClick={buttonHandler} className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center bg-clip-content">
                 <img className="object-fill bg-clip-content rounded-full" src={companion.icon}></img>
-              </button>
+              </Link>
             </div>
             
             {/* Companion name with hover effect */}
