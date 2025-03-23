@@ -53,6 +53,12 @@ export const StockPage = () => {
   const displayConfidence =
     traderParam === "CHICKEN" && topRec ? "100%" : topRec ? topRec.confidence : "";
 
+  const displayTicker =
+   traderParam === "CHICKEN" && topRec ? "NVDA" : topRec ? topRec.ticker : "";
+
+   const displayQuip = 
+  traderParam === "CHICKEN" && topRec ? topRec.quip.replace(topRec.ticker, "NVDA") : topRec ? topRec.quip : "";
+
   return (
     <section className="bg-gradient-to-br from-gray-900 to-black min-h-screen relative overflow-hidden">
       {/* Pie chart and companion icon - now on the left side and full height */}
@@ -78,7 +84,7 @@ export const StockPage = () => {
           ) : topRec ? (
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                {companionData.name} says buy {topRec.ticker}!
+                {companionData.name} says buy {displayTicker}!
               </h2>
               <p className="text-xl">
                 <strong>Confidence:</strong> {displayConfidence}
@@ -93,7 +99,7 @@ export const StockPage = () => {
         <div className="w-full max-w-xl p-10 bg-white/5 backdrop-blur-lg text-white rounded-2xl shadow-2xl min-h-[150px] mx-auto">
           {topRec ? (
             <div>
-              <p className="text-xl">{topRec.quip}</p>
+              <p className="text-xl">{displayQuip}</p>
             </div>
           ) : null}
         </div>
