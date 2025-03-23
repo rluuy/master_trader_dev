@@ -4,7 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-backend/*
+backend/Lib
+backend/Scripts
+backend/Include
+backend/pyvenv.cfg
 
 # testing
 /coverage

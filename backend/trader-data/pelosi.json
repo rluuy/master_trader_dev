@@ -1,0 +1,17 @@
+﻿{
+    "Item": {
+        "TraderId": {"S": "PELOSI"},
+        "RiskTolerance": {"S": "balanced"},
+        "TradingStrategy": {"S": "political_insider"},
+        "TraderType": {"S": "opportunistic"},
+        "SectorPreferences": {"M": {
+            "Technology": {"N": "0.4"},
+            "Financial": {"N": "0.3"},
+            "Energy": {"N": "0.2"},
+            "Defense": {"N": "0.1"}
+        }},
+        "AvgTradeSize": {"N": "100000"},
+        "Description": {"S": "Wall Street's favorite grandmother with uncanny market timing"},
+        "QuipStyle": {"S": "subtle_timing_references"}
+    }
+}
