@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { companions } from './companions';
+import ID from './id';
+
+function buttonHandler(companionID){
+  ID.setValue(companionID)
+}
 
 const LandingPage = () => {
   const [loaded, setLoaded] = useState(false);
-  
-  // Placeholder data for the 6 AI companions (to be updated later)
-  const companions = [
-    { id: 1, name: "AI 1", color: "from-emerald-400 to-teal-500" },
-    { id: 2, name: "AI 2", color: "from-violet-400 to-purple-600" },
-    { id: 3, name: "AI 3", color: "from-rose-400 to-red-600" },
-    { id: 4, name: "AI 4", color: "from-amber-400 to-orange-600" },
-    { id: 5, name: "AI 5", color: "from-sky-400 to-blue-600" },
-    { id: 6, name: "AI 6", color: "from-pink-400 to-fuchsia-600" },
-  ];
 
   useEffect(() => {
     // Trigger entrance animations after component mounts
@@ -29,11 +26,11 @@ const LandingPage = () => {
       {/* Glass container for main content */}
       <div className={`bg-black bg-opacity-40 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 mb-16 text-center max-w-3xl w-full shadow-2xl transition-all duration-1000 ease-out transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
         <div className="relative mb-6">
-          <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Master-Trader</h1>
+          <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Mastertrader</h1>
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full opacity-80"></div>
         </div>
 
-        <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI-Companion below</h2>
+        <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI trading companion below</h2>
       </div>
 
       {/* Companions row with staggered entrance animations */}
@@ -50,9 +47,9 @@ const LandingPage = () => {
               <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${companion.color} blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
               
               {/* Inner content */}
-              <div className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center">
-                <span className="text-xl font-bold text-white relative z-10">{companion.name}</span>
-              </div>
+              <button onClick={buttonHandler} className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center bg-clip-content">
+                <img className="object-fill bg-clip-content rounded-full" src={companion.icon}></img>
+              </button>
             </div>
             
             {/* Companion name with hover effect */}
@@ -62,8 +59,8 @@ const LandingPage = () => {
       </div>
       
       {/* Subtle footer element */}
-      <div className={`fixed bottom-6 text-gray-600 text-sm transition-all duration-1000 delay-1000 ${loaded ? 'opacity-50' : 'opacity-0'}`}>
-        Powered by Advanced Trading Intelligence
+      <div className={`fixed bottom-6 text-gray-600 text-sm transition-all duration-1000 delay-1000 ${loaded ? 'opacity-100' : 'opacity-10'}`}>
+        Team #50 Tucson Potholes
       </div>
     </div>
   );

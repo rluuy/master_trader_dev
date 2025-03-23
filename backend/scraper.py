@@ -135,7 +135,10 @@ def scrape_stock_news(ticker):
 
     Parameters:
      - (String) ticker: ticker of the stock to scrape 
+
+    Return: list containing headline and link in tuple of len(2)
     '''
+    
     options = Options()
     options.add_argument("--headless")  # Run in headless mode
     options.add_argument("--window-size=1920,1080")
