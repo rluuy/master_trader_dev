@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import AnimatedLoadingPieChart from './piechart';
 
-export const StockPage = () =>{
-    const [loaded, setLoaded] = useState(false);
+export const StockPage = () => {
+  const [loaded, setLoaded] = useState(false);
 
-    useEffect(() => {
-        // Trigger entrance animations after component mounts
-        setLoaded(true);
-      }, []);
+  useEffect(() => {
+    // Trigger entrance animations after component mounts
+    setLoaded(true);
+  }, []);
 
-    return (
+  return (
     <section className="bg-black min-h-screen flex flex-col justify-center relative overflow-hidden">
-      <div className="flex flex-row h-full py-20">
-        <div className="h-full p-1">
-          <AnimatedLoadingPieChart />
+      <div className="flex flex-row h-full pt-24">
+        <div className="relative">
+          {/* The pie chart */}
+          <div className="relative z-0">
+            <AnimatedLoadingPieChart />
+          </div>
+          {/* The chicken icon overlay - centered on the pie chart */}
+          <div className="absolute inset-0 z-10 translate-x-1/3 translate-y-1/2">
+            <img
+              src="chicken_icon.png"
+              alt="Chicken Icon"
+              className="left-auto bottom-auto w-auto h-auto"
+            />
+          </div>
         </div>
-      </div>
 
+      </div>
     </section>
-    );
+  );
 }

@@ -10,12 +10,12 @@ import { StockPage } from './stock_page.js';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App overflow-hidden">
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<StockPage />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </div>

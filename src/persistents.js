@@ -21,8 +21,8 @@ function Navbar() {
             
             {/* Primary Navbar items - hidden on mobile */}
             <div className="hidden md:flex items-center space-x-1">
-              <Link to="/" className="py-4 px-2 text-white border-b-2 border-blue-500 font-light">Home</Link>
-              <Link to="/about" className="py-4 px-2 text-white font-light hover:text-white hover:border-blue-500 transition duration-300">About</Link>
+              <Link to="/" className="py-4 px-2 text-white font-light hover:text-blue-500 transition duration-300">Home</Link>
+              <Link to="/about" className="py-4 px-2 text-white font-light hover:text-blue-500 transition duration-300">About</Link>
             </div>
           </div>
           

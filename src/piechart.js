@@ -29,6 +29,16 @@ const AnimatedLoadingPieChart = () => {
     const radius = 150;
     const labelRadius = radius * 0.7;
 
+    // Define glow filter
+    const glowFilter = (
+        <defs>
+            <filter id="glow" x="-20%" y="-20%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+    );
+
     // Calculate and create pie slices
     const createPieSlices = () => {
         let currentAngle = 0;
@@ -83,10 +93,18 @@ const AnimatedLoadingPieChart = () => {
 
             return (
                 <g key={index}>
+                    {/* Glow effect (same path but blurred) */}
                     <path
                         d={path}
                         fill={item.color}
-                        stroke="#fff"
+                        opacity="0.9"
+                        filter="url(#glow)"
+                    />
+                    {/* Main slice */}
+                    <path
+                        d={path}
+                        fill={item.color}
+                        stroke="#502F77"
                         strokeWidth="1"
                     />
                     {showLabel && (
@@ -121,6 +139,7 @@ const AnimatedLoadingPieChart = () => {
 
     return (
         <svg width="auto" height="auto" viewBox="150 0 150 300" preserveAspectRatio="none" display={"block"}>
+            {glowFilter}
             {createPieSlices()}
         </svg>
     );
