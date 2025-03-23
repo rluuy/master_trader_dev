@@ -1,0 +1,72 @@
+import React, { useState, useEffect } from 'react';
+
+const LandingPage = () => {
+  const [loaded, setLoaded] = useState(false);
+  
+  // Placeholder data for the 6 AI companions (to be updated later)
+  const companions = [
+    { id: 1, name: "AI 1", color: "from-emerald-400 to-teal-500" },
+    { id: 2, name: "AI 2", color: "from-violet-400 to-purple-600" },
+    { id: 3, name: "AI 3", color: "from-rose-400 to-red-600" },
+    { id: 4, name: "AI 4", color: "from-amber-400 to-orange-600" },
+    { id: 5, name: "AI 5", color: "from-sky-400 to-blue-600" },
+    { id: 6, name: "AI 6", color: "from-pink-400 to-fuchsia-600" },
+  ];
+
+  useEffect(() => {
+    // Trigger entrance animations after component mounts
+    setLoaded(true);
+  }, []);
+
+  return (
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-white/[0.02]"></div>
+      <div className="absolute -left-20 top-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute -right-20 top-40 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute left-20 bottom-20 w-72 h-72 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+      {/* Glass container for main content */}
+      <div className={`bg-black bg-opacity-40 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 mb-16 text-center max-w-3xl w-full shadow-2xl transition-all duration-1000 ease-out transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+        <div className="relative mb-6">
+          <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Master-Trader</h1>
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full opacity-80"></div>
+        </div>
+
+        <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI-Companion below</h2>
+      </div>
+
+      {/* Companions row with staggered entrance animations */}
+      <div className="flex flex-wrap justify-center gap-10 max-w-6xl w-full">
+        {companions.map((companion, index) => (
+          <div 
+            key={companion.id} 
+            className={`flex flex-col items-center transition-all duration-700 ease-out transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
+            style={{ transitionDelay: `${300 + index * 150}ms` }}
+          >
+            {/* Circle container with glow effect */}
+            <div className={`group w-28 h-28 rounded-full bg-gradient-to-br ${companion.color} flex items-center justify-center mb-4 cursor-pointer shadow-lg relative transition-all duration-500 hover:scale-110 hover:shadow-lg`}>
+              {/* Glow effect */}
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${companion.color} blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
+              
+              {/* Inner content */}
+              <div className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center">
+                <span className="text-xl font-bold text-white relative z-10">{companion.name}</span>
+              </div>
+            </div>
+            
+            {/* Companion name with hover effect */}
+            <span className="text-gray-400 text-lg font-medium group-hover:text-white transition-colors duration-300">{companion.name}</span>
+          </div>
+        ))}
+      </div>
+      
+      {/* Subtle footer element */}
+      <div className={`fixed bottom-6 text-gray-600 text-sm transition-all duration-1000 delay-1000 ${loaded ? 'opacity-50' : 'opacity-0'}`}>
+        Powered by Advanced Trading Intelligence
+      </div>
+    </div>
+  );
+};
+
+export default LandingPage;
