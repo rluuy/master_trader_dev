@@ -25,13 +25,14 @@ const LandingPage = () => {
 
       {/* Glass container for main content */}
       <div className={`bg-black bg-opacity-40 backdrop-blur-xl border border-gray-800 rounded-3xl p-8 mb-16 text-center max-w-3xl w-full shadow-2xl transition-all duration-1000 ease-out transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
-        <div className="relative mb-6">
-          <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Mastertrader</h1>
-          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full opacity-80"></div>
-        </div>
+  <div className="flex flex-col items-center justify-center relative mb-6">
+    <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Mastertrader</h1>
+    <div className="w-48 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full opacity-80"></div>
+    <img src="logo512.png" className="w-1/4 h-fit object-center mt-4"></img>
+  </div>
 
-        <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI trading companion below</h2>
-      </div>
+  <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI trading companion below</h2>
+</div>
 
       {/* Companions row with staggered entrance animations */}
       <div className="flex flex-wrap justify-center gap-10 max-w-6xl w-full">
