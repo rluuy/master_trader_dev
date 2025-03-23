@@ -16,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/about" element={<About />} />
+          <Route path="/stock" element={<StockPage/>}/>
         </Routes>
       </BrowserRouter>
     </div>
