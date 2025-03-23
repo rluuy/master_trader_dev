@@ -54,10 +54,25 @@ export const StockPage = () => {
     traderParam === "CHICKEN" && topRec ? "100%" : topRec ? topRec.confidence : "";
 
   return (
-    <section className="bg-gradient-to-br from-gray-900 to-black min-h-screen flex flex-col justify-center relative overflow-hidden">
-      <div className="flex flex-col items-center space-y-8 pt-24">
+    <section className="bg-gradient-to-br from-gray-900 to-black min-h-screen relative overflow-hidden">
+      {/* Pie chart and companion icon - now on the left side and full height */}
+      <div className="absolute h-screen flex items-center pt-6">
+        <div className="relative">
+          <AnimatedLoadingPieChart />
+          <div className="absolute inset-0 z-10 translate-x-1/3 translate-y-2/3">
+            <img
+              src={companionData.icon}
+              alt="Icon"
+              className="w-auto h-auto"
+            />
+          </div>
+        </div>
+      </div>
+      
+      {/* Right side content - centered both horizontally and vertically */}
+      <div className="flex flex-col items-center justify-center space-y-8 flex-1 h-screen">
         {/* Modern styled box for Companion's message and confidence */}
-        <div className="w-full max-w-xl p-10 bg-white/10 backdrop-blur-lg text-white rounded-2xl shadow-2xl">
+        <div className="w-full max-w-xl p-10 bg-white/10 backdrop-blur-lg text-white rounded-2xl shadow-2xl mx-auto">
           {isLoading ? (
             <p className="text-lg">Loading prediction...</p>
           ) : topRec ? (
@@ -75,7 +90,7 @@ export const StockPage = () => {
         </div>
         
         {/* Modern styled box for Quip - starts empty on entry */}
-        <div className="w-full max-w-xl p-10 bg-white/5 backdrop-blur-lg text-white rounded-2xl shadow-2xl min-h-[150px]">
+        <div className="w-full max-w-xl p-10 bg-white/5 backdrop-blur-lg text-white rounded-2xl shadow-2xl min-h-[150px] mx-auto">
           {topRec ? (
             <div>
               <p className="text-xl">{topRec.quip}</p>
@@ -83,25 +98,13 @@ export const StockPage = () => {
           ) : null}
         </div>
 
-        {/* Modern gradient button */}
-        <button 
-          onClick={handlePredictStock}
-          className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 text-xl">
-          Predict Stock
-        </button>
-
-        {/* Existing pie chart and companion icon */}
-        <div className="flex flex-row w-full max-w-4xl">
-          <div className="relative">
-            <AnimatedLoadingPieChart />
-            <div className="absolute inset-0 z-10 translate-x-1/3 translate-y-1/2">
-              <img
-                src={companionData.icon}
-                alt="Icon"
-                className="w-auto h-auto"
-              />
-            </div>
-          </div>
+        {/* Modern gradient button - centered */}
+        <div className="flex justify-center w-full">
+          <button 
+            onClick={handlePredictStock}
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full shadow-lg hover:from-blue-600 hover:to-purple-600 transition-all duration-300 text-xl">
+            Predict Stock
+          </button>
         </div>
       </div>
     </section>
