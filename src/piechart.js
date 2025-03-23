@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import id from './id';
+import { companionPortfolios } from './companions';
 
+    
 const AnimatedLoadingPieChart = () => {
     const [animationProgress, setAnimationProgress] = useState(0);
 
     // Data for the pie chart
-    const data = [
-        { name: 'NVDA', value: 50, color: '#76b900' },
-        { name: 'AMD', value: 25, color: '#76b9ff' },
-        { name: 'TSLA', value: 25, color: '#f0bf00' }
-    ];
+    const data = companionPortfolios[id.getValue()].stocks;
 
     // Calculate total value
-    const total = data.reduce((sum, item) => sum + item.value, 0);
-
+    const total = data.reduce((sum, item) => sum + item.percentage, 0);
+        
     // Animation effect
     useEffect(() => {
         if (animationProgress < 100) {
@@ -45,7 +44,7 @@ const AnimatedLoadingPieChart = () => {
 
         return data.map((item, index) => {
             // Calculate angle for this slice
-            const sliceAngle = (item.value / total) * 180;
+            const sliceAngle = (item.percentage / total) * 180;
 
             // Calculate the current visible angle based on animation progress
             const maxVisibleAngle = (animationProgress / 100) * 360;
@@ -89,7 +88,7 @@ const AnimatedLoadingPieChart = () => {
             currentAngle = fullSliceAngle;
 
             // Only show label if slice is mostly visible
-            const showLabel = sliceAngle > 10;
+            const showLabel = sliceAngle > 5;
 
             return (
                 <g key={index}>
@@ -114,7 +113,7 @@ const AnimatedLoadingPieChart = () => {
                                 textAnchor="middle"
                                 dominantBaseline="middle"
                                 fill="#fff"
-                                fontSize="14"
+                                fontSize="8"
                                 fontWeight="bold">
 
                                 {item.name}
@@ -125,10 +124,10 @@ const AnimatedLoadingPieChart = () => {
                                 textAnchor="middle"
                                 dominantBaseline="middle"
                                 fill="#fff"
-                                fontSize="10"
+                                fontSize="5"
                                 fontWeight="light"
                             >
-                                {item.value}%
+                                {item.percentage}%
                             </text>
                         </g>
                     )}

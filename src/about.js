@@ -24,7 +24,7 @@ If you're looking for investment advice backed by experience and allegedly impec
           </div>
           <div className="bg-[#16162F] p-6 rounded-lg">
             <h3 className="text-xl font-medium text-gray-300 mb-2">Opinionated Tycoon</h3>
-            <p className="text-gray-600 mb-2">Marjorie Taylor Green</p>
+            <p className="text-gray-600 mb-2">Marjorie Taylor Greene</p>
             <div className="text-center">
             <img className="w-32 h-32 bg-gray-900 border-2 border-[#313147] rounded-full mx-auto mb-4" src="green_icon.png" />
           </div>
@@ -38,7 +38,7 @@ If you're looking for investment advice backed by experience and allegedly impec
             <img className="w-32 h-32 bg-gray-900 border-2 border-[#313147] rounded-full mx-auto mb-4" src="fetterman_icon.png" />
           </div>
             <p className="text-gray-300 text-left">If you had to describe John Fetterman with a single word, it would have to be: "John Fetterman." This cool cucumber is a down-to-earth pragmatist, making waves in Washington one cozy hoodie at a time. He's also known for making great picks at the stock exchange, garnering great respect from investors all around. John Fetterman's greatest downfall is that he is forgetful, sometimes forgetting conversations as they happen. That's part of what makes him so chill: he's a live and let live type of fellow.</p><br></br>
-            <p className="text-gray-300 text-left">Fetterman's trading algorithm is based on his trading data in capitoltrades.com. By analyzing this data with artificial intelligence, the algorithm can mimic his picks and earn you money!</p>
+            <p className="text-gray-300 text-left">Fetterman's trading algorithm is based on his trading data in capitoltrades.com. His tactics on bond buying are sure to guarantee a minimum bottom line!</p>
           </div>
           <div className="bg-[#16162F] p-6 rounded-lg">
             <h3 className="text-xl font-medium text-gray-300 mb-2">Eller Undergraduate</h3>

@@ -10,7 +10,7 @@ class ID {
     }
     
     // Initialize state
-    this.value = 0;
+    this.value = 1;
     this.listeners = new Set();
     
     // Save the instance

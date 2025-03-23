@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { companions } from './companions';
+import { companionslist } from './companions';
 import ID from './id';
 
 function buttonHandler(companionID){
@@ -35,7 +35,7 @@ const LandingPage = () => {
 
       {/* Companions row with staggered entrance animations */}
       <div className="flex flex-wrap justify-center gap-10 max-w-6xl w-full">
-        {companions.map((companion, index) => (
+        {companionslist.map((companion, index) => (
           <div 
             key={companion.id} 
             className={`flex flex-col items-center transition-all duration-700 ease-out transform ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
@@ -47,7 +47,7 @@ const LandingPage = () => {
               <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${companion.color} blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-300`}></div>
               
               {/* Inner content */}
-              <Link to="/stock" onClick={buttonHandler} className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center bg-clip-content">
+              <Link to="/stock" onClick={() => buttonHandler(companion.id)} className="absolute inset-0.5 rounded-full bg-gray-900 flex items-center justify-center bg-clip-content">
                 <img className="object-fill bg-clip-content rounded-full" src={companion.icon}></img>
               </Link>
             </div>

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import AnimatedLoadingPieChart from './piechart';
+import { companions } from './companions';
+import id from './id';
 
 export const StockPage = () => {
   const [loaded, setLoaded] = useState(false);
-
+  const data = companions[id.getValue()]
+  
   useEffect(() => {
     // Trigger entrance animations after component mounts
     setLoaded(true);
