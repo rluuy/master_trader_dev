@@ -32,7 +32,7 @@ const LandingPage = () => {
     <p className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Insider Trading for the Public Interest™</p>
   </div>
 
-  <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI trading companion below</h2>
+  <h2 className="text-2xl text-gray-300 font-light mt-4">Choose your AI trading companion below</h2>
 </div>
 
       {/* Companions row with staggered entrance animations */}
