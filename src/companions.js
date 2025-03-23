@@ -54,8 +54,9 @@ export const companionPortfolios = {
     },
     4: { // For companion ID 3
         stocks: [
-          { name: "VTI", percentage:20, color:"#950730" },
-          { name: "VOO", percentage:80, color:"#9A0718" }, 
+          { name: "VTI", percentage:55, color:"#950730" },
+          { name: "VOO", percentage:33, color:"#9A0718" }, 
+          { name: "SCHG", percentage:12, color:"#009DDB" }, 
         ]
     },
     5: { // For companion ID 3

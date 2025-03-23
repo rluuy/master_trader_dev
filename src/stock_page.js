@@ -23,8 +23,8 @@ export const StockPage = () => {
           {/* The chicken icon overlay - centered on the pie chart */}
           <div className="absolute inset-0 z-10 translate-x-1/3 translate-y-1/2">
             <img
-              src="chicken_icon.png"
-              alt="Chicken Icon"
+              src={data.icon}
+              alt="Icon"
               className="left-auto bottom-auto w-auto h-auto"
             />
           </div>
