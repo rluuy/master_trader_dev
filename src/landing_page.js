@@ -29,6 +29,7 @@ const LandingPage = () => {
     <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 tracking-tight mb-0">Mastertrader</h1>
     <div className="w-48 h-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full opacity-80"></div>
     <img src="logo512.png" className="w-1/4 h-fit object-center mt-4"></img>
+    <p className="text-xl bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">Insider Trading for the Public Interest™</p>
   </div>
 
   <h2 className="text-2xl text-gray-300 font-light mt-8">Choose your AI trading companion below</h2>
